@@ -6,13 +6,13 @@ import { Outlet } from 'react-router';
 
 const Layout = () => {
     return (
-        <div>
+        <>
             <Navbar />
             <div className='min-h-screen'>
                  <Outlet/>
             </div>
             <Footer />
-        </div>
+        </>
     );
 };
 
