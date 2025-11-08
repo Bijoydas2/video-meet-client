@@ -7,12 +7,12 @@ const CTASection: React.FC = () => {
       <img
         src="https://i.ibb.co.com/tPp2JMfH/pexels-tima-miroshnichenko-5685961.jpg"
         alt="Video call illustration"
-        className="absolute left-0 bottom-0 w-48 md:w-64  rounded-2xl animate-fadeInUp"
+        className="absolute left-0 bottom-0 w-48 md:w-64 rounded-tr-2xl animate-fadeInUp"
       />
       <img
         src="https://i.ibb.co.com/TBfX56jD/pexels-ivan-s-4240503.jpg"
         alt="AI assistant illustration"
-        className="absolute  right-0 top-0 w-48 md:w-64 rounded-2xl animate-fadeInDown"
+        className="absolute  right-0 top-0 w-48 md:w-64 rounded-bl-2xl animate-fadeInDown"
       />
 
 
@@ -30,10 +30,10 @@ const CTASection: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="btn bg-white text-blue-600 font-semibold border-none hover:bg-gray-100">
+            <button className="btn bg-white text-primary font-semibold border-none hover:bg-gray-100">
               Start Free Trial
             </button>
-            <button className="btn btn-outline border-white text-white hover:bg-white hover:text-blue-600">
+            <button className="btn btn-outline border-white text-white hover:bg-white hover:text-primary">
               Learn More
             </button>
           </div>
@@ -43,7 +43,7 @@ const CTASection: React.FC = () => {
           <img
             src="https://i.ibb.co.com/20dD5hYk/pexels-diva-plavalaguna-6147014.jpg"
             alt="Team collaboration illustration"
-            className="w-80 rounded-2xl shadow-lg"
+            className="w-80 rounded shadow-lg"
           />
         </div>
       </div>

@@ -5,6 +5,9 @@ import { RouterProvider } from "react-router";
 import { router } from "./Router/Router";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import AuthProvider from "./Context/AuthProvider";
+import { ToastContainer } from "react-toastify";
+
 
 
 function Main() {
@@ -12,7 +15,12 @@ function Main() {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+        <ToastContainer position="top-center" />
+    </AuthProvider>
+  );
 }
 
 createRoot(document.getElementById("root")!).render(

@@ -26,7 +26,7 @@ const FeaturesSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="bg-white text-gray-800 py-20 px-6">
+    <section id="features"  className="bg-primary/10 text-gray-800 py-20 px-6">
       <h2
         className="text-4xl font-bold text-center mb-12 text-black"
         data-aos="fade-up"
