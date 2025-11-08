@@ -1,4 +1,6 @@
 import { useState } from "react";
+import logo from "../assets/video.png"
+import { Link,  } from "react-router";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,9 +12,13 @@ export default function Navbar() {
     >
       {/* Left Section */}
       <div className="flex-1">
-        <a className="text-2xl font-bold text-primary cursor-pointer">
-          Video Meet
-        </a>
+      <Link to="/"> 
+      <div className="flex items-center">
+            <img src={logo} alt="" className="w-10 h-10"/>
+            <h4 className=" text-2xl text-primary font-bold ml-2">Video Meet</h4>
+            </div>
+
+      </Link>
       </div>
 
       {/* Desktop Menu */}
