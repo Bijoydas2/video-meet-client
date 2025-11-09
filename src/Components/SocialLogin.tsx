@@ -29,14 +29,13 @@ const SocialLogin: React.FC<SocialLoginProps> = ({ from = "/" }) => {
       const userInfo = {
         name: user.displayName,
         email: user.email,
-        photo: user.photoURL,
-        role: "customer",
+        photoURL: user.photoURL,
         created_at: new Date().toISOString(),
         last_log_in: new Date().toISOString(),
       };
 
       // Save user to DB
-      await fetch("/users", {
+      await fetch(`${import.meta.env.VITE_API_URL}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userInfo),

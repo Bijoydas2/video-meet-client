@@ -77,10 +77,9 @@ const Register: React.FC = () => {
                 photoURL: profilePic,
             });
 
-            await axios.post("/users", {
+            await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
                 email,
                 name,
-                role: "customer",
                 photoURL: profilePic,
                 created_at: new Date().toISOString(),
                 last_log_in: new Date().toISOString(),
