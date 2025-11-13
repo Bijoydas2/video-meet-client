@@ -12,7 +12,8 @@ interface UserProfile {
 }
 
 const ProfileCard: React.FC = () => {
-  const { user: authUser } = useContext(AuthContext); 
+  const authContext = useContext(AuthContext);
+  const authUser = authContext?.user; // safely access user
   const [user, setUser] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -37,7 +38,8 @@ const ProfileCard: React.FC = () => {
 
   if (loading) return <Loading />;
 
-  if (!user) return <p className="text-center text-red-500 mt-10">Profile not found</p>;
+  if (!user)
+    return <p className="text-center text-red-500 mt-10">Profile not found</p>;
 
   return (
     <div className="max-w-4xl mx-auto mt-30 py-16 bg-gradient-to-r from-blue-50 to-white shadow-xl rounded-2xl overflow-hidden">
@@ -46,7 +48,7 @@ const ProfileCard: React.FC = () => {
         <div className="w-32 h-32 mx-auto rounded-full border-4 border-primary overflow-hidden shadow-md">
           <img
             src={user.photoURL || "/default-avatar.png"}
-            alt={user.displayName || "User"}
+            alt={user.name || "User"} 
             className="w-full h-full object-cover"
           />
         </div>
@@ -63,7 +65,6 @@ const ProfileCard: React.FC = () => {
         </div>
 
         {/* Last Login */}
-
         <div className="mt-2 flex items-center justify-center gap-2 text-gray-600">
           <FaClock className="text-primary" />
           <p className="text-sm">
@@ -79,9 +80,6 @@ const ProfileCard: React.FC = () => {
               : "N/A"}
           </p>
         </div>
-
-        
-        
       </div>
     </div>
   );

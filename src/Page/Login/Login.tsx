@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form'; 
 import { Link, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import SocailLogin from '../../Components/SocialLogin';
@@ -7,14 +7,16 @@ import { AuthContext } from '../../Context/AuthProvider';
 import Lottie from 'lottie-react';
 import loginLottie from '../../assets/Lotties/Login.json';
 
-
 interface FormData {
   email: string;
   password: string;
 }
 
 const Login: React.FC = () => {
-  const { loginUser } = useContext(AuthContext)
+  const authContext = useContext(AuthContext);
+  if (!authContext) throw new Error("AuthContext is undefined"); 
+  const { loginUser } = authContext;
+
   const location = useLocation();
   const navigate = useNavigate();
   const from = (location.state as any)?.from?.pathname || '/';
@@ -28,7 +30,6 @@ const Login: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     const { email, password } = data;
-
     try {
       await loginUser(email, password);
       toast.success('Your Account Logged In Successfully!');
@@ -56,7 +57,7 @@ const Login: React.FC = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="block text-sm text-gray-700 font-medium mb-1" htmlFor="email">
+            <label htmlFor="email" className="block text-sm text-gray-700 font-medium mb-1">
               Email Address
             </label>
             <input
@@ -70,7 +71,7 @@ const Login: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-gray-700 font-medium mb-1" htmlFor="password">
+            <label htmlFor="password" className="block text-sm text-gray-700 font-medium mb-1">
               Password
             </label>
             <input

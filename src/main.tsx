@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 
 
 
+
 function Main() {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
@@ -17,7 +18,7 @@ function Main() {
 
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+          <RouterProvider router={router} />
         <ToastContainer position="top-center" />
     </AuthProvider>
   );

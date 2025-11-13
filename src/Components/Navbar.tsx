@@ -6,9 +6,14 @@ import { AuthContext } from "../Context/AuthProvider";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext);
+
+ const authContext = useContext(AuthContext);
+const user = authContext?.user;
+const logOut = authContext?.logOut;
+
 
   const handleLogout = async () => {
+    if (!logOut) return; 
     try {
       await logOut();
       setIsDropdownOpen(false);
@@ -18,7 +23,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar bg-base-100 shadow-md px-4 md:px-10 fixed top-0 left-0 right-0 z-50" data-aos="fade-down">
+    <nav
+      className="navbar bg-base-100 shadow-md px-4 md:px-10 fixed top-0 left-0 right-0 z-50"
+      data-aos="fade-down"
+    >
       {/* Left Section */}
       <div className="flex-1">
         <Link to="/">
@@ -29,19 +37,27 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Right Section (Desktop) */}
+      {/* Right Section */}
       <div className="hidden md:flex items-center gap-3">
-        {/* Always visible Join Meeting button */}
-        <Link to="/join-meeting" className="btn btn-secondary">Join Meeting</Link>
+        <Link to="/dashboard" className="btn btn-secondary">
+          Start Meeting
+        </Link>
 
         {!user ? (
           <>
-            <Link to="/login" className="btn btn-ghost">Sign In</Link>
-            <Link to="/register" className="btn btn-primary">Get Started</Link>
+            <Link to="/login" className="btn btn-ghost">
+              Sign In
+            </Link>
+            <Link to="/register" className="btn btn-primary">
+              Get Started
+            </Link>
           </>
         ) : (
           <div className="relative">
-            <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="btn btn-ghost rounded-full p-1">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="btn btn-ghost rounded-full p-1"
+            >
               <img
                 src={user.photoURL || "https://i.ibb.co/0Jmshvb/default-avatar.png"}
                 alt="User Avatar"
@@ -53,7 +69,10 @@ export default function Navbar() {
                 <li className="px-4 py-2 hover:bg-gray-100">
                   <Link to="/profile">Profile</Link>
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleLogout}>
+                <li
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={handleLogout}
+                >
                   Logout
                 </li>
               </ul>
@@ -66,11 +85,23 @@ export default function Navbar() {
       <div className="md:hidden">
         <button className="btn btn-ghost" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {isMenuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           )}
@@ -79,22 +110,39 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-base-100 shadow-lg md:hidden border-t border-gray-200" data-aos="fade-down">
+        <div
+          className="absolute top-16 left-0 w-full bg-base-100 shadow-lg md:hidden border-t border-gray-200"
+          data-aos="fade-down"
+        >
           <ul className="menu p-4 space-y-3 text-center">
-           
-            <li><Link to="/join-meeting" className="btn btn-secondary">Join Meeting</Link></li>
+            <li>
+              <Link to="/meeting" className="btn btn-secondary">
+                Start Meeting
+              </Link>
+            </li>
 
             {!user ? (
               <>
-                <li><Link to="/login" className="btn btn-active w-full">Sign In</Link></li>
-                <li><Link to="/register" className="btn btn-primary w-full">Get Started</Link></li>
+                <li>
+                  <Link to="/login" className="btn btn-active w-full">
+                    Sign In
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register" className="btn btn-primary w-full">
+                    Get Started
+                  </Link>
+                </li>
               </>
             ) : (
               <>
                 <li className="px-4 py-2 hover:bg-gray-100">
                   <Link to="/profile">Profile</Link>
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleLogout}>
+                <li
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={handleLogout}
+                >
                   Logout
                 </li>
               </>

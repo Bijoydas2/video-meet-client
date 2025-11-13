@@ -4,8 +4,9 @@ import Home from "../Page/Home";
 import AuthLayout from "../MainLayout/AuthLayout";
 import Login from "../Page/Login/Login";
 import Register from "../Page/Register/Resgister";
-import JoinMeeting from "../Page/JoinMeeting/JoinMeeting";
 import ProfileCard from "../Components/ProfileCard";
+import VideoCall from "../Components/VideoCall";
+import Dashboard from "../Page/Dashboard/Dashboard";
 
 
 export const router = createBrowserRouter([
@@ -18,13 +19,12 @@ export const router = createBrowserRouter([
                 element:<Home/>
             },
             {
-                path:"/join-meeting",
-                element:<JoinMeeting/>
-            },
-            {
                 path:"/profile",
                 element:<ProfileCard/>
-            }
+            },
+          
+            
+           
         ]
     },
     {
@@ -38,7 +38,15 @@ export const router = createBrowserRouter([
             {
                 path:"register",
                 element:<Register/>
-            }
+            },
+            {
+                path:"/dashboard",
+                element:<Dashboard/>
+            },
+              {
+                path:"/meeting",
+                element:<VideoCall/>
+            },
         ]
     }
 ]);
