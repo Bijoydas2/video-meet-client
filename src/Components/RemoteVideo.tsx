@@ -1,5 +1,8 @@
 import  { useEffect, useRef } from 'react';
-import type { IRemoteUser } from 'agora-rtc-sdk-ng';
+import type { IAgoraRTCRemoteUser } from "agora-rtc-sdk-ng";
+
+export type IRemoteUser = IAgoraRTCRemoteUser;
+
 import { User } from 'lucide-react';
 
 interface Props {

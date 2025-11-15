@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const HeroSection: React.FC = () => {
 
@@ -30,7 +31,7 @@ const HeroSection: React.FC = () => {
           and AI summaries to boost productivity.
         </p>
         <div className="flex gap-4">
-          <button className="btn btn-primary">Start Free Trial</button>
+         <Link to="/meeting"> <button className="btn btn-primary">Start Free Trial</button></Link>
           <button
             onClick={handleLearnMore}
             className="btn btn-outline text-white hover:text-black"

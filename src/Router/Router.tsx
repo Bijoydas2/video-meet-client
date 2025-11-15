@@ -7,6 +7,7 @@ import Register from "../Page/Register/Resgister";
 import ProfileCard from "../Components/ProfileCard";
 import VideoCall from "../Components/VideoCall";
 import Dashboard from "../Page/Dashboard/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -41,11 +42,11 @@ export const router = createBrowserRouter([
             },
             {
                 path:"/dashboard",
-                element:<Dashboard/>
+                element:<PrivateRoute><Dashboard/></PrivateRoute>
             },
               {
                 path:"/meeting",
-                element:<VideoCall/>
+                element:<PrivateRoute><VideoCall/></PrivateRoute>
             },
         ]
     }

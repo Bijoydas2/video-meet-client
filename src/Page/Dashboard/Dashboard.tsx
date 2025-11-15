@@ -4,10 +4,15 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 
 const Dashboard: React.FC = () => {
-  const { user } = useContext(AuthContext);
+  const authContext = useContext(AuthContext); 
   const navigate = useNavigate();
-
- 
+  if (!authContext) {
+    return <div className="min-h-screen flex items-center justify-center bg-gray-900 text-gray-400">Loading user data...</div>;
+}
+  const { user } = authContext;
+  if (!user) {
+    return <div className="min-h-screen flex items-center justify-center bg-gray-900 text-gray-400">Loading user data...</div>;
+  }
 
   return (
     <div className="p-8 mt-30">
